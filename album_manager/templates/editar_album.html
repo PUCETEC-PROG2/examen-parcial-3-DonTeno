@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Editar {{ album.titulo }}{% endblock title %}
+
+{% block content %}
+<h1>Editar Álbum</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Guardar Cambios</button>
+</form>
+{% endblock content %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Pagina Principal{% endblock title %}
+{% block content %}
+
+  <h3>Catálogo de Discos de Música</h3>
+  <a href="{% url "album_manager:crear_artista" %}">Añadir Artista</a>
+  <div class="row">
+    {% for artista in artistas %}
+    <div class="col-sm-4">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ artista | capfirst }}</h5>
+          <p class="card-text">Nombre del Artista{{artista.nombre}}</p>
+          <a href="{% url "album_manager:detalle_artista" pk=artista.id %}" class="btn btn-primary">
+            <i class="fa-solid fa-eye"></i>
+          </a>
+          <a href="{% url "album_manager:editar_artista" pk=artista.id %}" class="btn btn-primary">
+            <i class="fa-solid fa-pencil"></i>
+          </a>
+          <a href="artistas/eliminar/{{artista.id}}" class="btn btn-danger">
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </div>
+      </div>
+      
+    </div>
+    {% endfor %}
+  </div>
+
+
+
+{% endblock content %}
+
+
+

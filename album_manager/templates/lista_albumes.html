@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Álbumes{% endblock title %}
+
+{% block content %}
+<h1>Álbumes</h1>
+<a href="{% url 'album_manager:crear_album' %}" class="btn btn-primary mb-3">Crear Álbum</a>
+<ul class="list-group">
+    {% for album in albumes %}
+    <li class="list-group-item">
+        <a href="{% url 'album_manager:detalle_album' album.pk %}">{{ album.titulo }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock content %}
